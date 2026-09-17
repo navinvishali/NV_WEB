@@ -1,92 +1,933 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navin Vishali  Memories - Photos</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f7f7f8;color:#222}
-.hero{padding:55px 20px;text-align:center;background:linear-gradient(135deg,#111,#444);color:white}
-.hero h1{font-size:38px;margin:0 0 10px}
-.hero p{margin:0;color:#ddd;font-size:17px}
-.container{max-width:1100px;margin:auto;padding:35px 20px}
-h2{text-align:center;margin:10px 0 30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
-.card{background:white;border-radius:18px;padding:28px 18px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.08);transition:.2s}
-.card:hover{transform:translateY(-4px)}
-.icon{font-size:48px}
-.card h3{margin:12px 0}
-.button{display:inline-block;margin-top:8px;padding:12px 22px;background:#111;color:white;text-decoration:none;border-radius:10px}
-.button:hover{opacity:.8}
-.note{text-align:center;color:#777;margin-top:30px;font-size:14px}
-footer{text-align:center;padding:30px;color:#888}
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Navin & Vishali Memories</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f7;
+            color: #222;
+        }
+
+
+        /* =========================
+           HERO / LINKEDIN STYLE BANNER
+           ========================= */
+
+        .hero {
+            position: relative;
+            min-height: 380px;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.25),
+                    rgba(0, 0, 0, 0.65)
+                ),
+                url("images/banner.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+
+        .hero-content {
+            padding: 30px 20px;
+        }
+
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: clamp(34px, 6vw, 60px);
+
+            font-weight: 700;
+
+            text-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.6);
+        }
+
+
+        .hero-subtitle {
+            margin-top: 15px;
+
+            font-size: clamp(18px, 3vw, 25px);
+
+            font-weight: 400;
+
+            text-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+
+        .hero-year {
+            margin-top: 18px;
+
+            font-size: 17px;
+
+            letter-spacing: 4px;
+
+            font-weight: 500;
+        }
+
+
+        .heart {
+            font-size: 30px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+           ========================= */
+
+        .container {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 50px 20px;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+           ========================= */
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .section-title h2 {
+            margin: 0 0 10px;
+
+            font-size: clamp(27px, 4vw, 36px);
+        }
+
+
+        .section-title p {
+            margin: 0;
+
+            color: #777;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           GRID
+           ========================= */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           CARD
+           ========================= */
+
+        .card {
+            background: white;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =========================
+           THUMBNAIL
+           ========================= */
+
+        .thumbnail {
+            position: relative;
+
+            width: 100%;
+
+            height: 200px;
+
+            overflow: hidden;
+
+            background: #ddd;
+        }
+
+
+        .thumbnail img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+
+        .card:hover .thumbnail img {
+            transform: scale(1.07);
+        }
+
+
+        /* =========================
+           PHOTO / VIDEO LABEL
+           ========================= */
+
+        .media-label {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            backdrop-filter: blur(5px);
+        }
+
+
+        /* =========================
+           VIDEO PLAY BUTTON
+           ========================= */
+
+        .play-button {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 62px;
+            height: 62px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.70);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            padding-left: 4px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .card:hover .play-button {
+            transform:
+                translate(-50%, -50%) scale(1.1);
+
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+
+        /* =========================
+           CARD CONTENT
+           ========================= */
+
+        .card-content {
+            padding: 22px;
+
+            text-align: center;
+        }
+
+
+        .card h3 {
+            margin: 0 0 17px;
+
+            font-size: 19px;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================
+           BUTTON
+           ========================= */
+
+        .button {
+            display: inline-block;
+
+            padding: 12px 24px;
+
+            background: #111;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .button:hover {
+            background: #444;
+
+            transform: scale(1.04);
+        }
+
+
+        /* =========================
+           QUOTE
+           ========================= */
+
+        .note {
+            text-align: center;
+
+            color: #777;
+
+            margin-top: 50px;
+
+            font-size: 16px;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 35px 20px;
+
+            background: #111;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                min-height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 35px 15px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+            .thumbnail {
+                height: 220px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-<section class="hero">
-  <h1>❤️ Navin Vishali  Memories ❤️</h1>
-  <p>2025 -∞ </p>
-</section>
 
-<main class="container">
-  <h2>📸 Photos & Videos 🎥</h2>
-  <div class="grid">
-    
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>ENGAGEMENT</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/1fNaMmk9vPuwMO8gNnwPqATKNalN0TbFB?usp=sharing" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>BRIDE 2 BE</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/13mp4BQjTSYQNu6zc8SQgeXm6M_XEETfR?usp=sharing" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>RECEPTION</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/1-yHMMzc1nZRP4aokeZNsTfWl2DhMKozY?usp=sharing" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>WEDDING</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/106OE-l9tWmq42NTg87kFHowqiMF2xuB1?usp=sharing" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>Photos 5</h3>
-      <a class="button" href="YOUR_PHOTO_5_LINK" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">📸</div>
-      <h3>Photos 6</h3>
-      <a class="button" href="YOUR_PHOTO_6_LINK" target="_blank" rel="noopener">View Photos</a>
-    </div>
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>TRADITIONAL VIDEOS</h3>
-      <a class="button" href="YOUR_PHOTO_7_LINK" target="_blank" rel="noopener">View Videos</a>
-    </div>
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>NV MINI BYTES</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/1_MBUFc8uJMHz1CMUMscpTmvI0vokuiGW?usp=sharing" target="_blank" rel="noopener">View Videos</a>
-    </div>
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>Pre Wed Videos</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/1UC37ZrPkaqjiTUX1SP0C7QWLK02Ir1Bu?usp=sharing" target="_blank" rel="noopener">View Videos</a>
-    </div>
-    <div class="card">
-      <div class="icon">🎥</div>
-      <h3>Shorts</h3>
-      <a class="button" href="https://drive.google.com/drive/folders/1HIlZD2YPL1k-uJ12KrIzQOTnTAC9ojHi?usp=sharing" target="_blank" rel="noopener">View Videos</a>
-    </div>
-  </div>
-  <p class="note">“Where there is love there is life.”</p>
-</main>
 
-<footer>Made with ❤️</footer>
+    <!-- =========================
+         HERO BANNER
+         ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <h1>
+                Navin & Vishali
+            </h1>
+
+            <div class="hero-subtitle">
+                Our Beautiful Journey
+            </div>
+
+            <div class="hero-year">
+                2025 - ∞
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PHOTOS & VIDEOS
+         ========================= -->
+
+    <main class="container">
+
+        <div class="section-title">
+
+            <h2>
+                📸 Photos & Videos 🎥
+            </h2>
+
+            <p>
+                Moments that became beautiful memories ❤️
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- =========================
+                 ENGAGEMENT
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/engagement.jpg"
+                        alt="Engagement Photos"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        ENGAGEMENT
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/1fNaMmk9vPuwMO8gNnwPqATKNalN0TbFB?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 BRIDE 2 BE
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/bride-to-be.jpg"
+                        alt="Bride 2 Be"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        BRIDE 2 BE
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/13mp4BQjTSYQNu6zc8SQgeXm6M_XEETfR?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 RECEPTION
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/reception.jpg"
+                        alt="Reception Photos"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        RECEPTION
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/1-yHMMzc1nZRP4aokeZNsTfWl2DhMKozY?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 WEDDING
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/wedding.jpg"
+                        alt="Wedding Photos"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        WEDDING
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/106OE-l9tWmq42NTg87kFHowqiMF2xuB1?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PHOTOS 5
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/photos5.jpg"
+                        alt="Photos 5"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        PHOTOS 5
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="YOUR_PHOTO_5_LINK"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PHOTOS 6
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/photos6.jpg"
+                        alt="Photos 6"
+                    >
+
+                    <div class="media-label">
+                        📸 PHOTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        PHOTOS 6
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="YOUR_PHOTO_6_LINK"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Photos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 TRADITIONAL VIDEOS
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/traditional-videos.jpg"
+                        alt="Traditional Videos"
+                    >
+
+                    <div class="media-label">
+                        🎥 VIDEO
+                    </div>
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        TRADITIONAL VIDEOS
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="YOUR_PHOTO_7_LINK"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Videos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 NV MINI BYTES
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/mini-bytes.jpg"
+                        alt="NV Mini Bytes"
+                    >
+
+                    <div class="media-label">
+                        🎥 VIDEO
+                    </div>
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        NV MINI BYTES
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/1_MBUFc8uJMHz1CMUMscpTmvI0vokuiGW?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Videos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PRE WED VIDEOS
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/pre-wed.jpg"
+                        alt="Pre Wedding Videos"
+                    >
+
+                    <div class="media-label">
+                        🎥 VIDEO
+                    </div>
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        PRE WED VIDEOS
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/1UC37ZrPkaqjiTUX1SP0C7QWLK02Ir1Bu?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Videos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 SHORTS
+                 ========================= -->
+
+            <div class="card">
+
+                <div class="thumbnail">
+
+                    <img
+                        src="images/shorts.jpg"
+                        alt="Shorts"
+                    >
+
+                    <div class="media-label">
+                        🎥 VIDEO
+                    </div>
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        SHORTS
+                    </h3>
+
+                    <a
+                        class="button"
+                        href="https://drive.google.com/drive/folders/1HIlZD2YPL1k-uJ12KrIzQOTnTAC9ojHi?usp=sharing"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Videos
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             QUOTE
+             ========================= -->
+
+        <p class="note">
+            “Where there is love there is life.” ❤️
+        </p>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        Made with ❤️ for
+        <strong>Navin & Vishali</strong>
+
+    </footer>
+
+
 </body>
+
 </html>
